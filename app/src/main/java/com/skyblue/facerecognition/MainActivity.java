@@ -28,11 +28,15 @@ public class MainActivity extends AppCompatActivity implements AlgoListener {
         setContentView(R.layout.activity_main);
 
         ArrayList<Algo> arrayList = new ArrayList<>();
-        arrayList.add(new Algo(R.drawable.baseline_portrait_black_48, "Face recognition", FaceRecognitionActivity.class));
+        arrayList.add(new Algo(R.drawable.face_icon_7, "Login", FaceRecognitionActivity.class));
         AlgoAdapter algoAdapter = new AlgoAdapter(arrayList, this);
         RecyclerView recyclerView = findViewById(R.id.main_recycler_view);
         recyclerView.setAdapter(algoAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
+//        Intent intent = new Intent(this, FaceRecognitionActivity.class);
+//        intent.putExtra("name", "FaceRecognitionActivity");
+//        startActivity(intent);
     }
 
     @Override

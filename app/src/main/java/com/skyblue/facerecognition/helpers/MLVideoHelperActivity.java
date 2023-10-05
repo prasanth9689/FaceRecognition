@@ -202,7 +202,7 @@ public abstract class MLVideoHelperActivity extends AppCompatActivity {
     }
 
     protected int getLensFacing() {
-        return CameraSelector.LENS_FACING_FRONT;
+        return CameraSelector.LENS_FACING_BACK;
     }
 
     protected abstract VisionBaseProcessor setProcessor();

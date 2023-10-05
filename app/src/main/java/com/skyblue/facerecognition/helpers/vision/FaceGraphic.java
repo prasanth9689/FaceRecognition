@@ -312,6 +312,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
 
     if (!TextUtils.isEmpty(name)) {
       canvas.drawText("Name: " + name, left, top + yLabelOffset, idPaints[colorID]);
+
     }
     yLabelOffset += lineHeight;
 

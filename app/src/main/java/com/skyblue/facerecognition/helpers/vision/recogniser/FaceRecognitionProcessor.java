@@ -1,5 +1,7 @@
 package com.skyblue.facerecognition.helpers.vision.recogniser;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Rect;
@@ -12,6 +14,7 @@ import androidx.annotation.OptIn;
 import androidx.camera.core.ExperimentalGetImage;
 import androidx.camera.core.ImageProxy;
 
+import com.skyblue.facerecognition.DashboardActivity;
 import com.skyblue.facerecognition.helpers.vision.FaceGraphic;
 import com.skyblue.facerecognition.helpers.vision.GraphicOverlay;
 import com.skyblue.facerecognition.helpers.vision.VisionBaseProcessor;
@@ -140,6 +143,9 @@ public class FaceRecognitionProcessor extends VisionBaseProcessor<List<Face>> {
                                 if (result.second < 1.0f) {
                                     faceGraphic.name = result.first;
                                     callback.onFaceRecognised(face, result.second, result.first);
+                                    stop();
+                                    goToScrollWindow(activity);
+                                    Log.e("face_", "Face recognized");
                                 }
                             }
                         }
@@ -152,6 +158,12 @@ public class FaceRecognitionProcessor extends VisionBaseProcessor<List<Face>> {
                         // intentionally left empty
                     }
                 });
+    }
+
+    public static void goToScrollWindow(Activity activity) {
+        Intent intent = new Intent(activity, DashboardActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        activity.startActivity(intent);
     }
 
     // looks for the nearest vector in the dataset (using L2 norm)
@@ -173,9 +185,7 @@ public class FaceRecognitionProcessor extends VisionBaseProcessor<List<Face>> {
                 ret = new Pair<>(name, distance);
             }
         }
-
         return ret;
-
     }
 
     public void stop() {

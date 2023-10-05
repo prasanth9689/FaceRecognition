@@ -14,10 +14,10 @@
         </intent>
         <intent>
             <action android:name="android.intent.action.GET_CONTENT" />
+
             <data android:mimeType="image/*" />
         </intent>
     </queries>
-
 
     <application
         android:allowBackup="true"
@@ -30,12 +30,15 @@
         android:theme="@style/Theme.FaceRecognition"
         tools:targetApi="31">
         <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".image.ImageClassificationActivity"
             android:exported="false" />
         <activity
             android:name=".object.FaceRecognitionActivity"
             android:exported="false"
-            android:screenOrientation="userPortrait"/>
+            android:screenOrientation="userPortrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -46,6 +49,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

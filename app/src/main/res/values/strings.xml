@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FaceRecognition</string>
+    <string name="face_attendance">Face Attendance</string>
 </resources>
